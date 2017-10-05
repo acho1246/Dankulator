@@ -50,7 +50,7 @@ public class CaclulatorGui extends Application{
 		//borderPane.setBottom(total);
 		borderPane.setCenter(pane);
 		
-		Button button = new Button("CE");
+				Button button = new Button("CE");
 		pane.add(button, 0, 0);
 		
 		Button button1 = new Button("C");
@@ -80,14 +80,14 @@ public class CaclulatorGui extends Application{
 		Button button9 = new Button("6");
 		pane.add(button9, 2, 2);
 		
-		Button button10 = new Button("1");
+		Button button10 = new Button("3");
 		pane.add(button10, 0, 3);
 		
 
 		Button button11 = new Button("2");
 		pane.add(button11, 1, 3);
 		
-		Button button12 = new Button("3");
+		Button button12 = new Button("1");
 		pane.add(button12, 2, 3);
 		
 		Button button13 = new Button("+");
@@ -96,14 +96,17 @@ public class CaclulatorGui extends Application{
 		Button button14 = new Button("-");
 		pane.add(button14, 3, 2);
 		
-		Button button15 = new Button(".");
+		Button button15 = new Button("0");
 		pane.add(button15, 3, 3);
 		
-		Button button16 = new Button("/");
+		Button button16 = new Button(".");
 		pane.add(button16, 4, 3);
 		
-		Button button17 = new Button("x");
+		Button button17 = new Button("/");
 		pane.add(button17, 4, 2);
+		
+		Button button18 = new Button("x");
+		pane.add(button18, 4, 1);
 		
 		
 		/* Display the stage */
