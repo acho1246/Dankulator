@@ -96,11 +96,14 @@ public class CaclulatorGui extends Application{
 		Button button14 = new Button("-");
 		pane.add(button14, 3, 2);
 		
-		Button button15 = new Button("x");
+		Button button15 = new Button(".");
 		pane.add(button15, 3, 3);
 		
-		Button button16 = new Button("+");
+		Button button16 = new Button("/");
 		pane.add(button16, 4, 3);
+		
+		Button button17 = new Button("x");
+		pane.add(button17, 4, 2);
 		
 		
 		/* Display the stage */
