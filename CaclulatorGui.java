@@ -1,10 +1,10 @@
-package Gui;
+package view;
 
 import javafx.application.*;
 import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.stage.*;
-import Model.Calculator;
+import model.Calculator;
 import javafx.scene.layout.*;
 import javafx.event.*;
 import javafx.geometry.Insets;
@@ -15,6 +15,7 @@ import java.text.NumberFormat;
 @SuppressWarnings("restriction")
 public class CaclulatorGui extends Application{
 	private TextArea displayArea;
+	private String digit;
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -108,11 +109,77 @@ public class CaclulatorGui extends Application{
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		
-
+		button.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent e) {
+				digit = "0";
+			}
+		});
+		
+		button1.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent e) {
+				digit = "1";
+			}
+		});
+		
+		button2.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent e) {
+				digit = "2";
+			}
+		});
+		
+		button3.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent e) {
+				digit = "3";
+			}
+		});
+		
+		button4.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent e) {
+				digit = "4";
+			}
+		});
+		
+		button5.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent e) {
+				digit = "5";
+			}
+		});
+		
+		button6.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent e) {
+				digit = "6";
+			}
+		});
+		
+		button7.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent e) {
+				digit = "7";
+			}
+		});
+		
+		button8.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent e) {
+				digit = "8";
+			}
+		});
+		
+		button9.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent e) {
+				digit = "9";
+			}
+		});
+		
+		
 		
 		
 
 	}
+	
+	public String getDigit() {
+		return digit;
+	}
+	
+	
 	
 	public static void main(String[] args) {
 		Application.launch(args);
