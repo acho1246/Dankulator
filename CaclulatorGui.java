@@ -115,67 +115,124 @@ public class CaclulatorGui extends Application{
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		
-		button.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent e) {
-				digit = "0";
-			}
-		});
-		
-		button1.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent e) {
-				digit = "1";
-			}
-		});
-		
-		button2.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent e) {
-				digit = "2";
-			}
-		});
-		
-		button3.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent e) {
-				digit = "3";
-			}
-		});
-		
 		button4.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
-				digit = "4";
+				digit = "7";
+				
+				displayArea.setText(digit);
 			}
 		});
 		
 		button5.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
-				digit = "5";
+				digit = "8";
+				
+				displayArea.setText(digit)
 			}
 		});
 		
 		button6.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
-				digit = "6";
+				digit = "9";
+				displayArea.setText(digit);
 			}
 		});
 		
 		button7.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
-				digit = "7";
+				digit = "4";
+				
+				displayArea.setText(digit);
 			}
 		});
 		
 		button8.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
-				digit = "8";
+				digit = "5";
+				
+				displayArea.setText(digit);
 			}
 		});
 		
 		button9.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
-				digit = "9";
+				digit = "6";
+				
+				displayArea.setText(digit);
 			}
 		});
 		
+		button10.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent e) {
+				digit = "3";
+				
+				displayArea.setText(digit);
+			}
+		});
 		
+		button11.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent e) {
+				digit = "2";
+				
+				displayArea.setText(digit);
+			}
+		});
+		
+		button12.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent e) {
+				digit = "1";
+				
+				displayArea.setText(digit);
+			}
+		});
+		
+		button13.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent e) {
+				digit = "+";
+				
+				displayArea.setText(digit);
+			}
+		});
+		
+		button14.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent e) {
+				digit = "-";
+				
+				displayArea.setText(digit);
+			}
+		});
+		
+		button15.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent e) {
+				digit = "0";
+				
+				displayArea.setText(digit);
+			}
+		});
+		
+		button16.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent e) {
+				digit = ".";
+				
+				displayArea.setText(digit);
+			}
+		});
+		
+		button17.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent e) {
+				digit = "/";
+				
+				displayArea.setText(digit);
+			}
+		});
+		
+		button18.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent e) {
+				digit = "*";
+				
+				displayArea.setText(digit);
+			}
+		});
 		
 		
 
