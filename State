@@ -1,0 +1,24 @@
+package model;
+
+public interface State {
+	public String add();
+	
+	public String subtract();
+	
+	public String miltiply();
+	
+	public String divide();
+	
+	public String inverse();
+	
+	public String squareRoot();
+	
+	public void clear();
+	
+	public void clearEntry();
+	
+	public void read();
+	
+	public String compute();
+
+}
