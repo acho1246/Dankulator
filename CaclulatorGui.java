@@ -80,15 +80,15 @@ public class CaclulatorGui extends Application{
 		Button button6 = new Button("6");
 		pane.add(button6, 2, 2);
 		
-		Button button3 = new Button("3");
-		pane.add(button3, 0, 3);
+		Button button1 = new Button("1");
+		pane.add(button1, 0, 3);
 		
 
 		Button button2 = new Button("2");
 		pane.add(button2, 1, 3);
 		
-		Button button1 = new Button("1");
-		pane.add(button1, 2, 3);
+		Button button3 = new Button("3");
+		pane.add(button3, 2, 3);
 		
 		Button buttonPlus = new Button("+");
 		pane.add(buttonPlus, 3, 1);
