@@ -50,63 +50,63 @@ public class CaclulatorGui extends Application{
 		//borderPane.setBottom(total);
 		borderPane.setCenter(pane);
 		
-				Button button = new Button("CE");
-		pane.add(button, 0, 0);
+		Button buttonCE = new Button("CE");
+		pane.add(buttonCE, 0, 0);
 		
-		Button button1 = new Button("C");
-		pane.add(button1, 1, 0);
+		Button buttonC = new Button("C");
+		pane.add(buttonC, 1, 0);
 		
-		Button button2 = new Button("1/x");
-		pane.add(button2, 2, 0);
+		Button buttonInv = new Button("1/x");
+		pane.add(buttonInv, 2, 0);
 		
-		Button button3 = new Button("sqrt");
-		pane.add(button3, 3, 0);
+		Button buttonSqrt = new Button("sqrt");
+		pane.add(buttonSqrt, 3, 0);
 		
-		Button button4 = new Button("7");
-		pane.add(button4, 0, 1);
+		Button button7 = new Button("7");
+		pane.add(button7, 0, 1);
 		
-		Button button5 = new Button("8");
-		pane.add(button5, 1, 1);
+		Button button8 = new Button("8");
+		pane.add(button8, 1, 1);
 		
-		Button button6 = new Button("9");
-		pane.add(button6, 2, 1);
+		Button button9 = new Button("9");
+		pane.add(button9, 2, 1);
 		
-		Button button7 = new Button("4");
-		pane.add(button7, 0, 2);
+		Button button4 = new Button("4");
+		pane.add(button4, 0, 2);
 		
-		Button button8 = new Button("5");
-		pane.add(button8, 1, 2);
+		Button button5 = new Button("5");
+		pane.add(button5, 1, 2);
 		
-		Button button9 = new Button("6");
-		pane.add(button9, 2, 2);
+		Button button6 = new Button("6");
+		pane.add(button6, 2, 2);
 		
-		Button button10 = new Button("3");
-		pane.add(button10, 0, 3);
+		Button button3 = new Button("3");
+		pane.add(button3, 0, 3);
 		
 
-		Button button11 = new Button("2");
-		pane.add(button11, 1, 3);
+		Button button2 = new Button("2");
+		pane.add(button2, 1, 3);
 		
-		Button button12 = new Button("1");
-		pane.add(button12, 2, 3);
+		Button button1 = new Button("1");
+		pane.add(button1, 2, 3);
 		
-		Button button13 = new Button("+");
-		pane.add(button13, 3, 1);
+		Button buttonPlus = new Button("+");
+		pane.add(buttonPlus, 3, 1);
 		
-		Button button14 = new Button("-");
-		pane.add(button14, 3, 2);
+		Button buttonMinus = new Button("-");
+		pane.add(buttonMinus, 3, 2);
 		
-		Button button15 = new Button("0");
-		pane.add(button15, 3, 3);
+		Button button0 = new Button("0");
+		pane.add(button0, 3, 3);
 		
-		Button button16 = new Button(".");
-		pane.add(button16, 4, 3);
+		Button buttonDecim = new Button(".");
+		pane.add(buttonDecim, 4, 3);
 		
-		Button button17 = new Button("/");
-		pane.add(button17, 4, 2);
+		Button buttonDiv = new Button("/");
+		pane.add(buttonDiv, 4, 2);
 		
-		Button button18 = new Button("x");
-		pane.add(button18, 4, 1);
+		Button buttonMult = new Button("x");
+		pane.add(buttonMult, 4, 1);
 		
 		
 		/* Display the stage */
@@ -115,7 +115,7 @@ public class CaclulatorGui extends Application{
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		
-		button4.setOnAction(new EventHandler<ActionEvent>() {
+		button7.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
 				digit = "7";
 				
@@ -123,7 +123,7 @@ public class CaclulatorGui extends Application{
 			}
 		});
 		
-		button5.setOnAction(new EventHandler<ActionEvent>() {
+		button8.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
 				digit = "8";
 				
@@ -131,14 +131,14 @@ public class CaclulatorGui extends Application{
 			}
 		});
 		
-		button6.setOnAction(new EventHandler<ActionEvent>() {
+		button9.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
 				digit = "9";
 				displayArea.setText(digit);
 			}
 		});
 		
-		button7.setOnAction(new EventHandler<ActionEvent>() {
+		button4.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
 				digit = "4";
 				
@@ -146,7 +146,7 @@ public class CaclulatorGui extends Application{
 			}
 		});
 		
-		button8.setOnAction(new EventHandler<ActionEvent>() {
+		button5.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
 				digit = "5";
 				
@@ -154,7 +154,7 @@ public class CaclulatorGui extends Application{
 			}
 		});
 		
-		button9.setOnAction(new EventHandler<ActionEvent>() {
+		button6.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
 				digit = "6";
 				
@@ -162,7 +162,7 @@ public class CaclulatorGui extends Application{
 			}
 		});
 		
-		button10.setOnAction(new EventHandler<ActionEvent>() {
+		button3.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
 				digit = "3";
 				
@@ -170,7 +170,7 @@ public class CaclulatorGui extends Application{
 			}
 		});
 		
-		button11.setOnAction(new EventHandler<ActionEvent>() {
+		button2.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
 				digit = "2";
 				
@@ -178,7 +178,7 @@ public class CaclulatorGui extends Application{
 			}
 		});
 		
-		button12.setOnAction(new EventHandler<ActionEvent>() {
+		button1.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
 				digit = "1";
 				
@@ -186,7 +186,7 @@ public class CaclulatorGui extends Application{
 			}
 		});
 		
-		button13.setOnAction(new EventHandler<ActionEvent>() {
+		buttonPlus.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
 				digit = "+";
 				
@@ -194,7 +194,7 @@ public class CaclulatorGui extends Application{
 			}
 		});
 		
-		button14.setOnAction(new EventHandler<ActionEvent>() {
+		buttonMinus.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
 				digit = "-";
 				
@@ -202,7 +202,7 @@ public class CaclulatorGui extends Application{
 			}
 		});
 		
-		button15.setOnAction(new EventHandler<ActionEvent>() {
+		button0.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
 				digit = "0";
 				
@@ -210,7 +210,7 @@ public class CaclulatorGui extends Application{
 			}
 		});
 		
-		button16.setOnAction(new EventHandler<ActionEvent>() {
+		buttonDecim.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
 				digit = ".";
 				
@@ -218,7 +218,7 @@ public class CaclulatorGui extends Application{
 			}
 		});
 		
-		button17.setOnAction(new EventHandler<ActionEvent>() {
+		buttonDiv.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
 				digit = "/";
 				
@@ -226,7 +226,7 @@ public class CaclulatorGui extends Application{
 			}
 		});
 		
-		button18.setOnAction(new EventHandler<ActionEvent>() {
+		buttonMult.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent e) {
 				digit = "*";
 				
