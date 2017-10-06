@@ -282,6 +282,8 @@ public class Calculator extends Application{
 			public void handle(ActionEvent e) {
 				currentState.compute();
 				displayArea.setText(answer);
+				firstNumber = "";
+				secondNumber = "";
 				currentState = readingFirst;
 			}
 		});
