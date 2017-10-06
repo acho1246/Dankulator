@@ -1,24 +1,16 @@
-package model;
 
 public interface State {
-	public String add();
 	
-	public String subtract();
+	public void inverse();
 	
-	public String miltiply();
+	public void squareRoot();
 	
-	public String divide();
-	
-	public String inverse();
-	
-	public String squareRoot();
+	public void compute();
 	
 	public void clear();
 	
-	public void clearEntry();
+	public void read(String digit);
 	
-	public void read();
-	
-	public String compute();
+	public String getNumber();
 
 }
