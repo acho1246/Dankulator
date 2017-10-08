@@ -304,19 +304,23 @@ public class Calculator extends Application{
 		}
 
 		public void inverse() {
-			double number = Double.parseDouble(firstNumber);
-			double inverse = 1 / number;
-			firstNumber = "" + inverse;
+			if (!(firstNumber.equals(""))) {
+				double number = Double.parseDouble(firstNumber);
+				double inverse = 1 / number;
+				firstNumber = "" + inverse;
+			}
 		}
 
 		public void squareRoot() {
-			double number = Double.parseDouble(firstNumber);
-			double sqrt = Math.sqrt(number);
+			if (!(firstNumber.equals(""))) {
+				double number = Double.parseDouble(firstNumber);
+				double sqrt = Math.sqrt(number);
 
-			if (number % sqrt == 0) {
-				firstNumber = "" + ((int) sqrt);
-			}else {
-				firstNumber = "" + sqrt;
+				if (number % sqrt == 0) {
+					firstNumber = "" + ((int) sqrt);
+				}else {
+					firstNumber = "" + sqrt;
+				}
 			}
 		}
 
@@ -360,20 +364,24 @@ public class Calculator extends Application{
 		}
 
 		public void inverse() {
-			double number = Double.parseDouble(secondNumber);
-			double inverse = 1 / number;
-			secondNumber = "" + inverse;
+			if (!(secondNumber.equals(""))) {
+				double number = Double.parseDouble(secondNumber);
+				double inverse = 1 / number;
+				secondNumber = "" + inverse;
+			}
 		}
 
 		public void squareRoot() {
-			double number = Double.parseDouble(secondNumber);
-			double sqrt = Math.sqrt(number);
-			secondNumber = "" + sqrt;
+			if (!(secondNumber.equals(""))) {
+				double number = Double.parseDouble(secondNumber);
+				double sqrt = Math.sqrt(number);
+				secondNumber = "" + sqrt;
 
-			if (number % sqrt == 0) {
-				firstNumber = "" + ((int) sqrt);
-			}else {
-				firstNumber = "" + sqrt;
+				if (number % sqrt == 0) {
+					secondNumber = "" + ((int) sqrt);
+				}else {
+					secondNumber = "" + sqrt;
+				}
 			}
 		}
 
