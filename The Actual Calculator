@@ -1,7 +1,10 @@
+package view;
+
 import javafx.application.*;
 import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.stage.*;
+import model.InterestCalculator;
 import javafx.scene.layout.*;
 import javafx.event.*;
 import javafx.geometry.Insets;
@@ -10,425 +13,128 @@ import javafx.geometry.Insets;
 import java.text.NumberFormat;
 
 @SuppressWarnings("restriction")
-public class Calculator extends Application{
+public class InterestTableGUI extends Application{
 	private TextArea displayArea;
-	private String firstNumber = "";
-	private String secondNumber = "";
-	private String operator;
-	private String answer;
-	private State readingFirst = new ReadingFirstOnly();
-	private State readingSecond = new ReadingSecondOnly();
-	private Error error = new Error();
-	private State currentState = readingFirst;
+	private InterestCalculator calculator = new InterestCalculator();
+	private Slider yearSlider;
+	private TextField principle, rate;
 
-	@Override
-	public void start(Stage primaryStage) {
-		int sceneWidth = 230, sceneHeight = 265;
+	public void start(Stage primaryStage){
+		int sceneWidth = 550, sceneHeight = 500;
 
-		int verSpaceBetweenNodes = 8, horSpaceBetweenNodes = 8;
-		int paneBorderTop = 20, paneBorderRight = 20;
-		int paneBorderBottom = 20, paneBorderLeft = 20;
+		int verSpaceBetweenNodes = 40, horSpaceBetweenNodes = 45;
+		int paneBorderTop = 10, paneBorderRight = 20;
+		int paneBorderBottom = 20, paneBorderLeft = 30;
 
 		displayArea = new TextArea();
 		displayArea.setEditable(false);
 		displayArea.setWrapText(true);
-		displayArea.setPrefWidth(230);
-		displayArea.setPrefHeight(80);
-
+		displayArea.setPrefWidth(550);
+		displayArea.setPrefHeight(300);
+		
 		ScrollPane scrollPane = new ScrollPane(displayArea);
-
+		
 		GridPane pane = new GridPane();
 		pane.setHgap(horSpaceBetweenNodes);
 		pane.setVgap(verSpaceBetweenNodes);
-		pane.setPadding(new Insets(paneBorderTop, paneBorderRight, 
-				paneBorderBottom, paneBorderLeft));
-
-
-
-		/* Adding elements */
+		pane.setPadding(new Insets(paneBorderTop, paneBorderRight, paneBorderBottom, paneBorderLeft));
+		
 		BorderPane borderPane = new BorderPane();
-		//borderPane.setTop(dataEntryArea);
 		borderPane.setTop(scrollPane);
-		//borderPane.setRight(total);
-		//borderPane.setBottom(total);
 		borderPane.setCenter(pane);
-
-		Button buttonCE = new Button("CE");
-		buttonCE.setPrefSize(40, 20);
-		pane.add(buttonCE, 0, 0);
-
-		Button buttonC = new Button("C");
-		buttonC.setPrefSize(40, 20);
-		pane.add(buttonC, 1, 0);
-
-		Button buttonInv = new Button("1/x");
-		buttonInv.setPrefSize(40, 20);
-		pane.add(buttonInv, 2, 0);
-
-		Button buttonSqrt = new Button("sqrt");
-		buttonSqrt.setPrefSize(40, 20);
-		pane.add(buttonSqrt, 3, 0);
-
-		Button button1 = new Button("1");
-		button1.setPrefSize(40, 20);
-		pane.add(button1, 0, 3);
-
-		Button button2 = new Button("2");
-		button2.setPrefSize(40, 20);
-		pane.add(button2, 1, 3);
-
-		Button button3 = new Button("3");
-		button3.setPrefSize(40, 20);
-		pane.add(button3, 2, 3);
-
-		Button button4 = new Button("4");
-		button4.setPrefSize(40, 20);
-		pane.add(button4, 0, 2);
-
-		Button button5 = new Button("5");
-		button5.setPrefSize(40, 20);
-		pane.add(button5, 1, 2);
-
-		Button button6 = new Button("6");
-		button6.setPrefSize(40, 20);
-		pane.add(button6, 2, 2);
-
-		Button button7 = new Button("7");
-		button7.setPrefSize(40, 20);
-		pane.add(button7, 0, 1);
-
-		Button button8 = new Button("8");
-		button8.setPrefSize(40, 20);
-		pane.add(button8, 1, 1);
-
-		Button button9 = new Button("9");
-		button9.setPrefSize(40, 20);
-		pane.add(button9, 2, 1);
-
-		Button button0 = new Button("0");
-		button0.setPrefSize(40, 20);
-		pane.add(button0, 1, 4);
-
-		Button buttonPlus = new Button("+");
-		buttonPlus.setPrefSize(40, 20);
-		pane.add(buttonPlus, 3, 4);
-
-		Button buttonMinus = new Button("-");
-		buttonMinus.setPrefSize(40, 20);
-		pane.add(buttonMinus, 3, 3);
-
-		Button buttonDecim = new Button(".");
-		buttonDecim.setPrefSize(40, 20);
-		pane.add(buttonDecim, 0, 4);
-
-		Button buttonDiv = new Button("/");
-		buttonDiv.setPrefSize(40, 20);
-		pane.add(buttonDiv, 3, 1);
-
-		Button buttonMult = new Button("x");
-		buttonMult.setPrefSize(40, 20);
-		pane.add(buttonMult, 3, 2);
-
-		Button buttonEquals = new Button("=");
-		buttonEquals.setPrefSize(40, 20);
-		pane.add(buttonEquals, 2, 4);
-
-
+		
+		//adds buttons
+		Button simpleInterest = new Button("Simple Interest");
+		simpleInterest.setPrefSize(130, 10);
+		pane.add(simpleInterest, 0, 3);
+		
+		Button compoundInterest = new Button("Compound Interest");
+		compoundInterest.setPrefSize(130, 10);
+		pane.add(compoundInterest, 1, 3);
+		
+		Button bothInterests = new Button("Both Interests");
+		bothInterests.setPrefSize(130, 10);
+		pane.add(bothInterests, 2, 3);
+		
+		GridPane insideGrid = new GridPane();
+		insideGrid.setHgap(20);
+		insideGrid.setVgap(10);
+		insideGrid.add(simpleInterest, 0, 0);
+		insideGrid.add(compoundInterest, 1, 0);
+		insideGrid.add(bothInterests, 2, 0);
+		
+		//adds the labels
+		FlowPane fields = new FlowPane();
+		fields.setHgap(10);
+		
+		Label principleLabel = new Label("Principle: ");
+		principle = new TextField();
+		fields.getChildren().addAll(principleLabel, principle);
+		
+		Label rateLabel = new Label("Rate (%): ");
+		rate = new TextField();
+		fields.getChildren().addAll(rateLabel, rate);
+		
+		//adds the slider
+		yearSlider = new Slider();
+		yearSlider.setMin(1);
+		yearSlider.setMax(25);
+		yearSlider.setValue(0);
+		yearSlider.setMajorTickUnit(4);
+		yearSlider.setShowTickMarks(true);
+		yearSlider.setShowTickLabels(true);
+		
+		Label years = new Label("Number of Years");
+		
+		GridPane slider = new GridPane();
+		slider.setHgap(horSpaceBetweenNodes);
+		slider.setVgap(verSpaceBetweenNodes);
+		slider.setPadding(new Insets(0, paneBorderRight, 0, paneBorderLeft));
+		
+		slider.add(years, 0, 0);
+		slider.add(yearSlider, 1, 0);
+		
+		pane.add(fields, 0, 0);
+		pane.add(slider, 0, 1);
+		pane.add(insideGrid, 0, 2);
+		
+		simpleInterest.setOnAction(new SimpleInterestButtonHandler());
+		
+		compoundInterest.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent e) {
+				calculator.setPrinciple(Double.parseDouble(principle.getText()));
+				calculator.setRate(Double.parseDouble(rate.getText()));
+				calculator.setYears(yearSlider.getValue());
+				displayArea.setText(calculator.computeCompoundInterest());
+			}
+		});
+		
+		bothInterests.setOnAction(e -> {
+			calculator.setPrinciple(Double.parseDouble(principle.getText()));
+			calculator.setRate(Double.parseDouble(rate.getText()));
+			calculator.setYears(yearSlider.getValue());
+			displayArea.setText(calculator.computeBothInterests());
+		});
+		
 		/* Display the stage */
 		Scene scene = new Scene(borderPane, sceneWidth, sceneHeight);
-		primaryStage.setTitle("Calculator");
+		primaryStage.setTitle("Interest Calculator");
 		primaryStage.setScene(scene);
 		primaryStage.show();
-
-		button1.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent e) {
-				currentState.read("1");
-				displayArea.setText(currentState.getNumber());
-			}
-		});
-
-		button2.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent e) {
-				currentState.read("2");
-				displayArea.setText(currentState.getNumber());
-			}
-		});
-
-		button3.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent e) {
-				currentState.read("3");
-				displayArea.setText(currentState.getNumber());
-			}
-		});
-
-		button4.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent e) {
-				currentState.read("4");
-				displayArea.setText(currentState.getNumber());
-			}
-		});
-
-		button5.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent e) {
-				currentState.read("5");
-				displayArea.setText(currentState.getNumber());
-			}
-		});
-
-		button6.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent e) {
-				currentState.read("6");
-				displayArea.setText(currentState.getNumber());
-			}
-		});
-
-		button7.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent e) {
-				currentState.read("7");
-				displayArea.setText(currentState.getNumber());
-			}
-		});
-
-		button8.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent e) {
-				currentState.read("8");
-				displayArea.setText(currentState.getNumber());
-			}
-		});
-
-		button9.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent e) {
-				currentState.read("9");
-				displayArea.setText(currentState.getNumber());
-			}
-		});
-
-		button0.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent e) {
-				currentState.read("0");
-				displayArea.setText(currentState.getNumber());
-			}
-		});
-
-		buttonPlus.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent e) {
-				operator = "+";
-				currentState = readingSecond;
-				secondNumber = "";
-			}
-		});
-
-		buttonMinus.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent e) {
-				operator = "-";
-				currentState = readingSecond;
-				secondNumber = "";
-			}
-		});
-
-		buttonDecim.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent e) {
-				currentState.read(".");
-				displayArea.setText(currentState.getNumber());
-			}
-		});
-
-		buttonDiv.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent e) {
-				operator = "/";
-				currentState = readingSecond;
-				secondNumber = "";
-			}
-		});
-
-		buttonMult.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent e) {
-				operator = "*";
-				currentState = readingSecond;
-				secondNumber = "";
-			}
-		});
-
-		buttonCE.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent e) {
-				currentState.clear();
-				displayArea.setText(currentState.getNumber());
-			}
-		});
-
-		buttonC.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent e) {
-				firstNumber = "";
-				secondNumber = "";
-				currentState = readingFirst;
-				displayArea.setText(currentState.getNumber());
-			}
-		});
-
-		buttonInv.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent e) {
-				currentState.inverse();
-				displayArea.setText(currentState.getNumber());
-			}
-		});
-
-		buttonSqrt.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent e) {
-				currentState.squareRoot();
-				displayArea.setText(currentState.getNumber());
-			}
-		});
-
-		buttonEquals.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent e) {
-				currentState.compute();
-				displayArea.setText(answer);
-				firstNumber = "";
-				secondNumber = "";
-				currentState = readingFirst;
-			}
-		});
 	}
-
-	public class ReadingFirstOnly implements State{
-		public void read(String digit) {
-			firstNumber += digit;
-		}
-
-		public String getNumber() {
-			return firstNumber;
-		}
-
-		public void clear() {
-			firstNumber = "";
-		}
-
-		public void inverse() {
-			if (!(firstNumber.equals(""))) {
-				double number = Double.parseDouble(firstNumber);
-				double inverse = 1 / number;
-				firstNumber = "" + inverse;
-			}
-		}
-
-		public void squareRoot() {
-			if (!(firstNumber.equals(""))) {
-				double number = Double.parseDouble(firstNumber);
-				double sqrt = Math.sqrt(number);
-
-				if (number % sqrt == 0) {
-					firstNumber = "" + ((int) sqrt);
-				}else {
-					firstNumber = "" + sqrt;
-				}
-			}
-		}
-
-		public void compute() {
-			if (secondNumber.equals("")) {
-				answer = firstNumber;
-			}else {
-				if (operator.equals("+")) {
-					double operand1 = Double.parseDouble(firstNumber);
-					double operand2 = Double.parseDouble(secondNumber);
-					answer = "" + (operand1 + operand2);
-				}else if (operator.equals("-")) {
-					double operand1 = Double.parseDouble(firstNumber);
-					double operand2 = Double.parseDouble(secondNumber);
-					answer = "" + (operand1 - operand2);
-				}else if (operator.equals("*")) {
-					double operand1 = Double.parseDouble(firstNumber);
-					double operand2 = Double.parseDouble(secondNumber);
-					answer = "" + (operand1 * operand2);
-				}else if (operator.equals("/")){
-					double operand1 = Double.parseDouble(firstNumber);
-					double operand2 = Double.parseDouble(secondNumber);
-					answer = "" + (operand1 / operand2);
-				}
-			}
-		}
-
-	}
-
-	public class ReadingSecondOnly implements State{
-		public void read(String digit) {
-			secondNumber += digit;
-		}
-
-		public String getNumber() {
-			return secondNumber;
-		}
-
-		public void clear() {
-			secondNumber = "";
-		}
-
-		public void inverse() {
-			if (!(secondNumber.equals(""))) {
-				double number = Double.parseDouble(secondNumber);
-				double inverse = 1 / number;
-				secondNumber = "" + inverse;
-			}
-		}
-
-		public void squareRoot() {
-			if (!(secondNumber.equals(""))) {
-				double number = Double.parseDouble(secondNumber);
-				double sqrt = Math.sqrt(number);
-				secondNumber = "" + sqrt;
-
-				if (number % sqrt == 0) {
-					secondNumber = "" + ((int) sqrt);
-				}else {
-					secondNumber = "" + sqrt;
-				}
-			}
-		}
-
-		public void compute() {
-			if (firstNumber.equals("")) {
-				error.noFirstOperand();
-			}else if (secondNumber.equals("")) {
-				answer = firstNumber;
-			}else {
-				if (operator.equals("+")) {
-					double operand1 = Double.parseDouble(firstNumber);
-					double operand2 = Double.parseDouble(secondNumber);
-					answer = "" + (operand1 + operand2);
-				}else if (operator.equals("-")) {
-					double operand1 = Double.parseDouble(firstNumber);
-					double operand2 = Double.parseDouble(secondNumber);
-					answer = "" + (operand1 - operand2);
-				}else if (operator.equals("*")) {
-					double operand1 = Double.parseDouble(firstNumber);
-					double operand2 = Double.parseDouble(secondNumber);
-					answer = "" + (operand1 * operand2);
-				}else if (operator.equals("/")){
-					if (secondNumber.equals("0")) {
-						error.divideByZero();
-					}else {
-						double operand1 = Double.parseDouble(firstNumber);
-						double operand2 = Double.parseDouble(secondNumber);
-						answer = "" + (operand1 / operand2);
-					}
-				}
-			}
-		}
-	}
-
-	public class Error{
-		public void divideByZero() {
-			answer = "Error";
-			currentState = readingFirst;
-		}
-
-		public void noFirstOperand() {
-			answer = "Enter the first number";
-			currentState = readingFirst;
+	
+	private class SimpleInterestButtonHandler implements EventHandler<ActionEvent> {
+		@Override
+		public void handle(ActionEvent e) {
+			calculator.setPrinciple(Double.parseDouble(principle.getText()));
+			calculator.setRate(Double.parseDouble(rate.getText()));
+			calculator.setYears(yearSlider.getValue());
+			displayArea.setText(calculator.computeSimpleInterest());
 		}
 	}
 
 	public static void main(String[] args) {
 		Application.launch(args);
 	}
+
 }
